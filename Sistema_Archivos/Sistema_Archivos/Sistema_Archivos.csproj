@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{776E185F-1A5A-43AD-B643-C3F3C890411C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Sistema_Archivos</RootNamespace>
+    <AssemblyName>Sistema_Archivos</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>ftp://ftp.alemaninformatica.com/site1/SistemaFun/Release/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
+    <UpdateInterval>1</UpdateInterval>
+    <UpdateIntervalUnits>Hours</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://alemaninformatica.com/SistemaFun/Release/</InstallUrl>
+    <SupportUrl>http://www.alemaninformatica.com</SupportUrl>
+    <ErrorReportUrl>http://www.alemaninformatica.com</ErrorReportUrl>
+    <ProductName>Sistema Fun</ProductName>
+    <PublisherName>Alemán Informática</PublisherName>
+    <SuiteName>Sistema Fun</SuiteName>
+    <MinimumRequiredVersion>1.9.1.1</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>SistemaFun.htm</WebPage>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>1.9.2.4</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>AB0D99F32D64286584265B204AFE8B854968E7FC</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Custom</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>iconoAplicacion.Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Excel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CruzBlancaDAL\ArchivoCruzBlanca.cs" />
+    <Compile Include="CruzBlancaDAL\EstadoRechazadoCruzBlancaDAL.cs" />
+    <Compile Include="EsencialDAL\ArchivoEsencial.cs" />
+    <Compile Include="CartaDAL\archivoCartaDAL.cs" />
+    <Compile Include="ColmenaDAL\archivoColmenaDAL.cs" />
+    <Compile Include="Clases\ComprobarUpdate.cs" />
+    <Compile Include="DAL\archivoDAL.cs" />
+    <Compile Include="Clases\Program.cs" />
+    <Compile Include="Clases\Conexion.cs" />
+    <Compile Include="DAL\estadoRechazadoDAL.cs" />
+    <Compile Include="ColmenaDAL\estadoRechazadoColmenaDAL.cs" />
+    <Compile Include="EsencialDAL\EstadoRechazadoEsencialDAL.cs" />
+    <Compile Include="Formularios_CruzBlanca\frmBuscarCruzBlanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmBuscarCruzBlanca.Designer.cs">
+      <DependentUpon>frmBuscarCruzBlanca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmCargarExcelCruzBlanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmCargarExcelCruzBlanca.Designer.cs">
+      <DependentUpon>frmCargarExcelCruzBlanca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmEliminarFunCruzBlanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmEliminarFunCruzBlanca.Designer.cs">
+      <DependentUpon>frmEliminarFunCruzBlanca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmGenerarArchivoRendicionCruzBlanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmGenerarArchivoRendicionCruzBlanca.Designer.cs">
+      <DependentUpon>frmGenerarArchivoRendicionCruzBlanca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmGenerarCargaNotificadorCruzBlanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmGenerarCargaNotificadorCruzBlanca.Designer.cs">
+      <DependentUpon>frmGenerarCargaNotificadorCruzBlanca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmIngresoCruzBlanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmIngresoCruzBlanca.Designer.cs">
+      <DependentUpon>frmIngresoCruzBlanca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmMantenedorPrincipalCruzBlanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmMantenedorPrincipalCruzBlanca.Designer.cs">
+      <DependentUpon>frmMantenedorPrincipalCruzBlanca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmMenuPrincipalCruzBlanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmMenuPrincipalCruzBlanca.Designer.cs">
+      <DependentUpon>frmMenuPrincipalCruzBlanca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmModificarFunCruzBlanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmModificarFunCruzBlanca.Designer.cs">
+      <DependentUpon>frmModificarFunCruzBlanca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmRendicionCruzBlanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_CruzBlanca\frmRendicionCruzBlanca.Designer.cs">
+      <DependentUpon>frmRendicionCruzBlanca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmBuscarEsencial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmBuscarEsencial.Designer.cs">
+      <DependentUpon>frmBuscarEsencial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmCargarExcelEsencial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmCargarExcelEsencial.Designer.cs">
+      <DependentUpon>frmCargarExcelEsencial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmEliminarFunEsencial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmEliminarFunEsencial.Designer.cs">
+      <DependentUpon>frmEliminarFunEsencial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmGenerarArchivoRendicionEsencial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmGenerarArchivoRendicionEsencial.Designer.cs">
+      <DependentUpon>frmGenerarArchivoRendicionEsencial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmGenerarCargaNotificadorEsencial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmGenerarCargaNotificadorEsencial.Designer.cs">
+      <DependentUpon>frmGenerarCargaNotificadorEsencial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmIngresoEsencial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmIngresoEsencial.Designer.cs">
+      <DependentUpon>frmIngresoEsencial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmMantenedorPrincipalEsencial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmMantenedorPrincipalEsencial.Designer.cs">
+      <DependentUpon>frmMantenedorPrincipalEsencial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmMenuPrincipalEsencial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmMenuPrincipalEsencial.Designer.cs">
+      <DependentUpon>frmMenuPrincipalEsencial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmModificarFunEsencial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmModificarFunEsencial.Designer.cs">
+      <DependentUpon>frmModificarFunEsencial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmRendicionEsencial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Esencial\frmRendicionEsencial.Designer.cs">
+      <DependentUpon>frmRendicionEsencial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmMenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmMenuPrincipal.Designer.cs">
+      <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmSalir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmSalir.Designer.cs">
+      <DependentUpon>frmSalir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmIngreso.Designer.cs">
+      <DependentUpon>frmIngreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\motivoDAL.cs" />
+    <Compile Include="DAL\notificadorDAL.cs" />
+    <Compile Include="Formularios_Consalud\frmMantenedorPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmMantenedorPrincipal.Designer.cs">
+      <DependentUpon>frmMantenedorPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmCambiarNombre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmCambiarNombre.Designer.cs">
+      <DependentUpon>frmCambiarNombre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmGenerarArchivoRendicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmGenerarArchivoRendicion.Designer.cs">
+      <DependentUpon>frmGenerarArchivoRendicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmRendicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmRendicion.Designer.cs">
+      <DependentUpon>frmRendicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmCambiarClave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmCambiarClave.Designer.cs">
+      <DependentUpon>frmCambiarClave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmEliminarFun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmEliminarFun.Designer.cs">
+      <DependentUpon>frmEliminarFun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmBuscarFun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmBuscarFun.Designer.cs">
+      <DependentUpon>frmBuscarFun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmModificarFun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmModificarFun.Designer.cs">
+      <DependentUpon>frmModificarFun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmCargarExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmCargarExcel.Designer.cs">
+      <DependentUpon>frmCargarExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmAcercaDe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmAcercaDe.Designer.cs">
+      <DependentUpon>frmAcercaDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmInicio.Designer.cs">
+      <DependentUpon>frmInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\ModifyProgressBarColor.cs" />
+    <Compile Include="Formularios_Consalud\frmArranque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmArranque.Designer.cs">
+      <DependentUpon>frmArranque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmAgregarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmAgregarUsuario.Designer.cs">
+      <DependentUpon>frmAgregarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmVerUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmVerUsuarios.Designer.cs">
+      <DependentUpon>frmVerUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmGenerarCargaNotificador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmGenerarCargaNotificador.Designer.cs">
+      <DependentUpon>frmGenerarCargaNotificador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmSeleccionarSistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmSeleccionarSistema.Designer.cs">
+      <DependentUpon>frmSeleccionarSistema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmMenuPrincipalColmena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmMenuPrincipalColmena.Designer.cs">
+      <DependentUpon>frmMenuPrincipalColmena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmIngresoColmena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmIngresoColmena.Designer.cs">
+      <DependentUpon>frmIngresoColmena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmGenerarArchivoRendicionColmena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmGenerarArchivoRendicionColmena.Designer.cs">
+      <DependentUpon>frmGenerarArchivoRendicionColmena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmRendicionColmena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmRendicionColmena.Designer.cs">
+      <DependentUpon>frmRendicionColmena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmEliminarFunColmena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmEliminarFunColmena.Designer.cs">
+      <DependentUpon>frmEliminarFunColmena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmBuscarColmena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmBuscarColmena.Designer.cs">
+      <DependentUpon>frmBuscarColmena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmModificarFunColmena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmModificarFunColmena.Designer.cs">
+      <DependentUpon>frmModificarFunColmena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmCargarExcelColmena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmCargarExcelColmena.Designer.cs">
+      <DependentUpon>frmCargarExcelColmena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmGenerarCargaNotificadorColmena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmGenerarCargaNotificadorColmena.Designer.cs">
+      <DependentUpon>frmGenerarCargaNotificadorColmena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmMantenedorPrincipalColmena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Colmena\frmMantenedorPrincipalColmena.Designer.cs">
+      <DependentUpon>frmMantenedorPrincipalColmena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmMenuPrincipalCarta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmMenuPrincipalCarta.Designer.cs">
+      <DependentUpon>frmMenuPrincipalCarta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmIngresoCarta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmIngresoCarta.Designer.cs">
+      <DependentUpon>frmIngresoCarta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmGenerarArchivoRendicionCarta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmGenerarArchivoRendicionCarta.Designer.cs">
+      <DependentUpon>frmGenerarArchivoRendicionCarta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmRendicionCarta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmRendicionCarta.Designer.cs">
+      <DependentUpon>frmRendicionCarta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmEliminarFunCarta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmEliminarFunCarta.Designer.cs">
+      <DependentUpon>frmEliminarFunCarta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmBuscarFunCarta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmBuscarFunCarta.Designer.cs">
+      <DependentUpon>frmBuscarFunCarta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmModificarFunCarta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmModificarFunCarta.Designer.cs">
+      <DependentUpon>frmModificarFunCarta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmCargarExcelCarta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmCargarExcelCarta.Designer.cs">
+      <DependentUpon>frmCargarExcelCarta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmGenerarCargaNotificadorCarta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmGenerarCargaNotificadorCarta.Designer.cs">
+      <DependentUpon>frmGenerarCargaNotificadorCarta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmMantenedorPrincipalCarta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Carta\frmMantenedorPrincipalCarta.Designer.cs">
+      <DependentUpon>frmMantenedorPrincipalCarta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmAvisoActualizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios_Consalud\frmAvisoActualizar.Designer.cs">
+      <DependentUpon>frmAvisoActualizar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Clases\Sesion.cs" />
+    <Compile Include="DAL\usuarioDAL.cs" />
+    <EmbeddedResource Include="Formularios_CruzBlanca\frmBuscarCruzBlanca.resx">
+      <DependentUpon>frmBuscarCruzBlanca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_CruzBlanca\frmCargarExcelCruzBlanca.resx">
+      <DependentUpon>frmCargarExcelCruzBlanca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_CruzBlanca\frmEliminarFunCruzBlanca.resx">
+      <DependentUpon>frmEliminarFunCruzBlanca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_CruzBlanca\frmGenerarArchivoRendicionCruzBlanca.resx">
+      <DependentUpon>frmGenerarArchivoRendicionCruzBlanca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_CruzBlanca\frmGenerarCargaNotificadorCruzBlanca.resx">
+      <DependentUpon>frmGenerarCargaNotificadorCruzBlanca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_CruzBlanca\frmIngresoCruzBlanca.resx">
+      <DependentUpon>frmIngresoCruzBlanca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_CruzBlanca\frmMantenedorPrincipalCruzBlanca.resx">
+      <DependentUpon>frmMantenedorPrincipalCruzBlanca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_CruzBlanca\frmMenuPrincipalCruzBlanca.resx">
+      <DependentUpon>frmMenuPrincipalCruzBlanca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_CruzBlanca\frmModificarFunCruzBlanca.resx">
+      <DependentUpon>frmModificarFunCruzBlanca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_CruzBlanca\frmRendicionCruzBlanca.resx">
+      <DependentUpon>frmRendicionCruzBlanca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Esencial\frmBuscarEsencial.resx">
+      <DependentUpon>frmBuscarEsencial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Esencial\frmCargarExcelEsencial.resx">
+      <DependentUpon>frmCargarExcelEsencial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Esencial\frmEliminarFunEsencial.resx">
+      <DependentUpon>frmEliminarFunEsencial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Esencial\frmGenerarArchivoRendicionEsencial.resx">
+      <DependentUpon>frmGenerarArchivoRendicionEsencial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Esencial\frmGenerarCargaNotificadorEsencial.resx">
+      <DependentUpon>frmGenerarCargaNotificadorEsencial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Esencial\frmIngresoEsencial.resx">
+      <DependentUpon>frmIngresoEsencial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Esencial\frmMantenedorPrincipalEsencial.resx">
+      <DependentUpon>frmMantenedorPrincipalEsencial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Esencial\frmMenuPrincipalEsencial.resx">
+      <DependentUpon>frmMenuPrincipalEsencial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Esencial\frmModificarFunEsencial.resx">
+      <DependentUpon>frmModificarFunEsencial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Esencial\frmRendicionEsencial.resx">
+      <DependentUpon>frmRendicionEsencial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Carta\frmEliminarFunCarta.resx">
+      <DependentUpon>frmEliminarFunCarta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Carta\frmGenerarArchivoRendicionCarta.resx">
+      <DependentUpon>frmGenerarArchivoRendicionCarta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Carta\frmMantenedorPrincipalCarta.resx">
+      <DependentUpon>frmMantenedorPrincipalCarta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Carta\frmRendicionCarta.resx">
+      <DependentUpon>frmRendicionCarta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Colmena\frmBuscarColmena.resx">
+      <DependentUpon>frmBuscarColmena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Colmena\frmCargarExcelColmena.resx">
+      <DependentUpon>frmCargarExcelColmena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Colmena\frmEliminarFunColmena.resx">
+      <DependentUpon>frmEliminarFunColmena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Colmena\frmGenerarArchivoRendicionColmena.resx">
+      <DependentUpon>frmGenerarArchivoRendicionColmena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Colmena\frmMenuPrincipalColmena.resx">
+      <DependentUpon>frmMenuPrincipalColmena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmCambiarNombre.resx">
+      <DependentUpon>frmCambiarNombre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmMantenedorPrincipal.resx">
+      <DependentUpon>frmMantenedorPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmMenuPrincipal.resx">
+      <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmModificarFun.resx">
+      <DependentUpon>frmModificarFun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmRendicion.resx">
+      <DependentUpon>frmRendicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmSalir.resx">
+      <DependentUpon>frmSalir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmIngreso.resx">
+      <DependentUpon>frmIngreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmGenerarArchivoRendicion.resx">
+      <DependentUpon>frmGenerarArchivoRendicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmCambiarClave.resx">
+      <DependentUpon>frmCambiarClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmEliminarFun.resx">
+      <DependentUpon>frmEliminarFun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmBuscarFun.resx">
+      <DependentUpon>frmBuscarFun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmCargarExcel.resx">
+      <DependentUpon>frmCargarExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmAcercaDe.resx">
+      <DependentUpon>frmAcercaDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmInicio.resx">
+      <DependentUpon>frmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmArranque.resx">
+      <DependentUpon>frmArranque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmAgregarUsuario.resx">
+      <DependentUpon>frmAgregarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmSeleccionarSistema.resx">
+      <DependentUpon>frmSeleccionarSistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmVerUsuarios.resx">
+      <DependentUpon>frmVerUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmGenerarCargaNotificador.resx">
+      <DependentUpon>frmGenerarCargaNotificador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Colmena\frmIngresoColmena.resx">
+      <DependentUpon>frmIngresoColmena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Colmena\frmRendicionColmena.resx">
+      <DependentUpon>frmRendicionColmena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Colmena\frmModificarFunColmena.resx">
+      <DependentUpon>frmModificarFunColmena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Colmena\frmGenerarCargaNotificadorColmena.resx">
+      <DependentUpon>frmGenerarCargaNotificadorColmena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Colmena\frmMantenedorPrincipalColmena.resx">
+      <DependentUpon>frmMantenedorPrincipalColmena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Carta\frmMenuPrincipalCarta.resx">
+      <DependentUpon>frmMenuPrincipalCarta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Carta\frmIngresoCarta.resx">
+      <DependentUpon>frmIngresoCarta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Carta\frmBuscarFunCarta.resx">
+      <DependentUpon>frmBuscarFunCarta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Carta\frmModificarFunCarta.resx">
+      <DependentUpon>frmModificarFunCarta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Carta\frmCargarExcelCarta.resx">
+      <DependentUpon>frmCargarExcelCarta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Carta\frmGenerarCargaNotificadorCarta.resx">
+      <DependentUpon>frmGenerarCargaNotificadorCarta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios_Consalud\frmAvisoActualizar.resx">
+      <DependentUpon>frmAvisoActualizar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrarsesion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\casa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globo_informacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aleman_informatica.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aleman_informatica_blanco.png" />
+    <None Include="Resources\minimizarBlanco_sinfondo.png" />
+    <None Include="Resources\ico5102.ico" />
+    <None Include="Resources\carga.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="iconoAplicacion.Icon.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
