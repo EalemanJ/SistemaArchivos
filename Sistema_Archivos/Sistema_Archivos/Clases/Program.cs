@@ -76,5 +76,3 @@ namespace Sistema_Archivos
         }
     }
 }
-
-//teli188273ad

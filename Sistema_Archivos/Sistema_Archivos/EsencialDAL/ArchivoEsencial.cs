@@ -79,14 +79,15 @@ namespace Sistema_Archivos
         {
             int res = 0;
             SqlCommand ins = conectar.Comando();
-            ins.CommandText = "insert into sa_archivo_esencial (sa_archivo_esencial_fun, sa_archivo_esencial_tipo_fun, sa_archivo_esencial_rut_afiliado, sa_archivo_esencial_nombre_empresa,  " +
-            " sa_archivo_esencial_direccion_empresa, sa_archivo_esencial_comuna_empresa, sa_motivo, sa_estado_rechazado_esencial, sa_archivo_esencial_direccion_dg, sa_archivo_esencial_fecha_ingreso, " +
-            " sa_archivo_esencial_fecha_carga, sa_archivo_esencial_fecha_notificacion, sa_archivo_esencial_fecha_dg, sa_archivo_esencial_fecha_proceso, sa_archivo_esencial_fecha_rendicion, " +
-            " sa_archivo_esencial_fecha_rechazo, sa_archivo_esencial_fecha_finiquito, sa_archivo_esencial_fecha_descarga, sa_notificador, sa_usuario) " +
-            " values (@sa_archivo_fun, @sa_tipo_fun, @sa_archivo_rut_afiliado, @sa_archivo_nombre_empresa, @sa_archivo_direccion_empresa, " +
-            " @sa_archivo_comuna_empresa, @sa_motivo, @sa_estados_rechazados, @sa_archivo_direccion_dg, @sa_archivo_fecha_ingreso, @sa_archivo_fecha_carga, " +
-            " @sa_archivo_fecha_notificacion, @sa_archivo_fecha_dg, @sa_archivo_fecha_proceso, @sa_archivo_fecha_rendicion, @sa_archivo_fecha_rechazo, @sa_archivo_fecha_finiquito, " +
-            " @sa_archivo_fecha_descarga, @sa_notificador, @sa_usuario)";
+            ins.CommandText = @"
+            INSERT INTO sa_archivo_esencial (sa_archivo_esencial_fun, sa_archivo_esencial_tipo_fun, sa_archivo_esencial_rut_afiliado, sa_archivo_esencial_nombre_empresa, 
+                sa_archivo_esencial_direccion_empresa, sa_archivo_esencial_comuna_empresa, sa_motivo, sa_estado_rechazado_esencial, sa_archivo_esencial_direccion_dg, sa_archivo_esencial_fecha_ingreso, 
+                sa_archivo_esencial_fecha_carga, sa_archivo_esencial_fecha_notificacion, sa_archivo_esencial_fecha_dg, sa_archivo_esencial_fecha_proceso, sa_archivo_esencial_fecha_rendicion, 
+                sa_archivo_esencial_fecha_rechazo, sa_archivo_esencial_fecha_finiquito, sa_archivo_esencial_fecha_descarga, sa_notificador, sa_usuario) 
+            VALUES (@sa_archivo_fun, @sa_tipo_fun, @sa_archivo_rut_afiliado, @sa_archivo_nombre_empresa, @sa_archivo_direccion_empresa, 
+                @sa_archivo_comuna_empresa, @sa_motivo, @sa_estados_rechazados, @sa_archivo_direccion_dg, @sa_archivo_fecha_ingreso, @sa_archivo_fecha_carga,
+                @sa_archivo_fecha_notificacion, @sa_archivo_fecha_dg, @sa_archivo_fecha_proceso, @sa_archivo_fecha_rendicion, @sa_archivo_fecha_rechazo, @sa_archivo_fecha_finiquito,
+                @sa_archivo_fecha_descarga, @sa_notificador, @sa_usuario)";
             ins.Parameters.AddWithValue("@sa_archivo_fun", fun);
             ins.Parameters.AddWithValue("@sa_tipo_fun", tipo_fun);
             ins.Parameters.AddWithValue("@sa_archivo_rut_afiliado", rut);
@@ -116,18 +117,19 @@ namespace Sistema_Archivos
         public DataTable GenerarArchivoRendicion(string fecha, int usuario, string tipo_rendicion)
         {
             SqlCommand sel = conectar.Comando();
-            sel.CommandText = "select a.sa_archivo_esencial_fun, a.sa_archivo_esencial_fecha_notificacion, a.sa_archivo_esencial_fecha_rendicion, a.sa_archivo_esencial_fecha_proceso, " +
-            " a.sa_archivo_esencial_fecha_finiquito, a.sa_archivo_esencial_direccion_dg, " +
-            " CASE " +
-            " WHEN convert(varchar(3), r.sa_estado_rechazado_esencial_desc, 120) = 'Sin' THEN '' " +
-            " Else convert(varchar(3), r.sa_estado_rechazado_esencial_desc, 120) " +
-            " End as [codigo] " +
-            " from sa_archivo_esencial as a " +
-            " inner join sa_notificador as n on a.sa_notificador = n.sa_notificador " +
-            " inner join sa_estado_rechazado_esencial as r on a.sa_estado_rechazado_esencial = r.sa_estado_rechazado_esencial " +
-            " inner join sa_motivo as m on m.sa_motivo = a.sa_motivo " +
-            " where a.sa_archivo_esencial_fecha_rendicion = @fecha and a.sa_usuario = @usuario and sa_archivo_esencial_tipo_descarga = @tipo_rendicion " +
-            " order by a.sa_archivo_esencial_orden_rendicion";
+            sel.CommandText = @"
+            SELECT a.sa_archivo_esencial_fun, a.sa_archivo_esencial_fecha_notificacion, a.sa_archivo_esencial_fecha_rendicion, a.sa_archivo_esencial_fecha_proceso,
+                a.sa_archivo_esencial_fecha_finiquito, a.sa_archivo_esencial_direccion_dg, 
+                CASE 
+                    WHEN convert(varchar(3), r.sa_estado_rechazado_esencial_desc, 120) = 'Sin' THEN '' 
+                    Else convert(varchar(3), r.sa_estado_rechazado_esencial_desc, 120)
+                End as [codigo] 
+            FROM sa_archivo_esencial as a 
+                INNER JOIN sa_notificador as n on a.sa_notificador = n.sa_notificador
+                INNER JOIN sa_estado_rechazado_esencial as r on a.sa_estado_rechazado_esencial = r.sa_estado_rechazado_esencial
+                INNER JOIN sa_motivo as m on m.sa_motivo = a.sa_motivo
+            WHERE a.sa_archivo_esencial_fecha_rendicion = @fecha and a.sa_usuario = @usuario and sa_archivo_esencial_tipo_descarga = @tipo_rendicion
+            ORDER BY a.sa_archivo_esencial_orden_rendicion";
             sel.Parameters.AddWithValue("@fecha", fecha);
             sel.Parameters.AddWithValue("@usuario", usuario);
             sel.Parameters.AddWithValue("@tipo_rendicion", tipo_rendicion);
