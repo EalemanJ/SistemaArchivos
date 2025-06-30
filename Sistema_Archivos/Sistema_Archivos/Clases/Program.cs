@@ -7,7 +7,7 @@ namespace Sistema_Archivos
     internal static class Program
     {
         /// <summary>
-        /// Punto de entrada principal para la aplicación.
+        /// Punto de entrada principal para la aplicación. //VERSIÓN 1.9.2.4
         /// </summary>
         [STAThread]
         private static void Main()
