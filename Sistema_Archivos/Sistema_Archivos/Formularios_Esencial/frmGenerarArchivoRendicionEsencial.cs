@@ -88,7 +88,7 @@ namespace Sistema_Archivos
                             fechaRendicion = "";
                         }
 
-                        dgvArchivoRendicion.Rows.Add(Num, "ESENCIAL", item["sa_archivo_esencial_fun"], fechaProceso, item["codigo"],
+                        dgvArchivoRendicion.Rows.Add(Num, "ESENCIAL", item["sa_archivo_esencial_fun"], fechaProceso, "00",
                             fechaNotificacion, fechaRendicion, rut_empresa, item["sa_archivo_esencial_direccion_dg"]);
 
                         Num++;
@@ -131,7 +131,7 @@ namespace Sistema_Archivos
                         {
                             fechaRendicion = "";
                         }
-                        dgvArchivoRendicion.Rows.Add(Num, "ESENCIAL", item["sa_archivo_esencial_fun"], fechaProceso, item["codigo"],
+                        dgvArchivoRendicion.Rows.Add(Num, "ESENCIAL", item["sa_archivo_esencial_fun"], fechaProceso, "01",
                             fechaNotificacion, fechaRendicion, rut_empresa, item["sa_archivo_esencial_direccion_dg"]);
 
                         Num++;
