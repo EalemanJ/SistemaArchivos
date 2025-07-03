@@ -1082,7 +1082,7 @@ namespace Sistema_Archivos
                             actualizar = new ArchivoEsencial().DescargarRechazado(fecha_rendicion, fecha_notificacion, fecha_descarga, fecha_finiquito, fecha_rechazo, rechazado, codigo_rechazo,
                                 Sesion.IdUsuario, orden, "REC", fun);
 
-                            if (codigo_rechazo == 6)
+                            if (codigo_rechazo == 7)
                             {
                                 if (!Sesion.VerificarInubicableEsencial(rut))
                                 {

@@ -99,7 +99,7 @@ namespace Sistema_Archivos
                         actualizar_todo = new ArchivoEsencial().ActualizarTodo(tipo_fun, txtRutAfiliado.Text, txtNombreEmpresa.Text, txtDireccionEmpresa.Text,
                         txtComuna.Text, motivo, rechazo, txtDireccionDG.Text, FecIngreso, FecCarga, FecNoti, FecDg, FecProc, FecRend, FecRechazo, FecFiniquito, FecDescarga,
                         notificador, txtFun.Text);
-                        if (rechazo == 6)
+                        if (rechazo == 7)
                         {
                             if (!Sesion.VerificarInubicableEsencial(txtRutAfiliado.Text))
                             {
