@@ -89,34 +89,40 @@ namespace Sistema_Archivos
             int notificador = 1; //NOTIFICADOR POR DEFECTO
             int motivo = 1; //motivo por defecto
             int rechazo = 1; //estado rechazo por defecto
-            string FechaProceso = "", Folio = "", RutAfiliado = "", FechaFun = "", Nombre = "", Calle = "", Num = "",
-                Depto = "", Comuna = "", Direccion = "", FechaIngreso = DateTime.Now.ToString("dd-MM-yyyy");
+            string Isapre, NroNomina, FolioFun, TipoFun, FechaFun, RutEmp, DvEmp,
+                RegionEmpresa, CiudadEmpresa, ComunaEmpresa, DireccionEmpresa, FonoEmpresa,
+                FechaEntrega, RutProveedor, CorrelativoEntrega, Entregado,
+                RutCompleto, RazonSocial,
+                FechaIngreso = DateTime.Now.ToString("dd-MM-yyyy");
+
             foreach (DataGridViewRow row in dgvDatosExcel.Rows)
             {
-                //Foio|Rut afiliado|Fecha Fun|Razon social|Rut empleador|DV|Calle|Numero|Depto|Comuna|Ciudad|Telefono|Correo|Pactado|Tipo Notificación
+                Isapre = Convert.ToString(row.Cells[0].Value);
+                NroNomina = Convert.ToString(row.Cells[1].Value);
+                FolioFun = Convert.ToString(row.Cells[2].Value);
+                TipoFun = Convert.ToString(row.Cells[3].Value);
+                FechaFun = Convert.ToString(row.Cells[4].Value);
+                RutEmp = Convert.ToString(row.Cells[5].Value);
+                DvEmp = Convert.ToString(row.Cells[6].Value);
+                RazonSocial = Convert.ToString(row.Cells[7].Value);
+                RegionEmpresa = Convert.ToString(row.Cells[8].Value);
+                CiudadEmpresa = Convert.ToString(row.Cells[9].Value);
+                ComunaEmpresa = Convert.ToString(row.Cells[10].Value);
+                DireccionEmpresa = Convert.ToString(row.Cells[11].Value);
+                FonoEmpresa = Convert.ToString(row.Cells[12].Value);
+                FechaEntrega = Convert.ToString(row.Cells[13].Value);
+                RutProveedor = Convert.ToString(row.Cells[14].Value);
+                CorrelativoEntrega = Convert.ToString(row.Cells[15].Value);
+                Entregado = Convert.ToString(row.Cells[16].Value);
 
-                Folio = row.Cells[0].Value.ToString(); //folio
-                RutAfiliado = row.Cells[1].Value.ToString(); //Rut afiliado
-                FechaFun = row.Cells[2].Value.ToString(); // fecha proceso
-                Nombre = row.Cells[3].Value.ToString(); //Razon social
-                Calle = row.Cells[6].Value.ToString(); //Calle
-                Num = row.Cells[7].Value.ToString(); //Numero
-                Depto = row.Cells[8].Value.ToString(); //Depto
-                Comuna = row.Cells[9].Value.ToString(); //comuna
+                RutCompleto = string.Concat(RutEmp, DvEmp);
+                FechaFun = FechaFun.Substring(0, 10);
+                FechaFun = FechaFun.Replace("/", "-");
 
-                RutAfiliado = RutAfiliado.Replace("-", "");
-                Direccion = Calle + " " + Num + " " + Depto;
-                if (string.IsNullOrWhiteSpace(FechaFun))
-                {
-                    FechaProceso = "";
-                }
-                else
-                {
-                    FechaProceso = DateTime.Parse(FechaFun).ToString("dd-MM-yyyy");
-                }
-                int ingreso_masivo = new ArchivoCruzBlanca().IngresoArchivoExcel(Folio, "1", RutAfiliado, Nombre, Direccion, Comuna, motivo, rechazo, FechaIngreso, FechaProceso, notificador, Sesion.IdUsuario);
+                int ingreso_masivo = new ArchivoCruzBlanca().IngresoArchivoExcel(FolioFun, "1", RutCompleto, RazonSocial, DireccionEmpresa, ComunaEmpresa, motivo, rechazo, FechaIngreso, FechaFun, notificador, Sesion.IdUsuario);
                 cantidad_ingreso += 1;
             }
+
             MessageBox.Show("Datos desde planilla Excel ingresados correctamente. Se insertaron " + cantidad_ingreso + ".", "INGRESO CORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             Limpiar();
         }
