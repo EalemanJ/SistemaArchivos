@@ -212,7 +212,7 @@ namespace Sistema_Archivos
             " a.sa_archivo_Cruz_Blanca_direccion_dg as [Dirección D.G.], a.sa_archivo_Cruz_Blanca_fecha_ingreso as [Fecha Ingreso], a.sa_archivo_Cruz_Blanca_fecha_carga as [Fecha Carga], " +
             " a.sa_archivo_Cruz_Blanca_fecha_descarga as [Fecha Descarga], a.sa_archivo_Cruz_Blanca_fecha_notificacion as [Fecha Notificación], a.sa_archivo_Cruz_Blanca_fecha_dg as [Fecha D.G.], " +
             " a.sa_archivo_Cruz_Blanca_fecha_proceso as [Fecha Proceso], a.sa_archivo_Cruz_Blanca_fecha_rendicion as [Fecha Rendición], a.sa_archivo_Cruz_Blanca_fecha_rechazo as [Fecha de Rechazo], " +
-            " a.sa_archivo_Cruz_Blanca_fecha_finiquito as [Fecha Finiquito] " +
+            " a.sa_archivo_Cruz_Blanca_fecha_finiquito as [Fecha Finiquito], sa_archivo_Cruz_Blanca_remesa AS [Remesa] " +
             " from sa_archivo_Cruz_Blanca as a " +
             " inner join sa_notificador as n on a.sa_notificador = n.sa_notificador " +
             " inner join sa_estado_rechazado_Cruz_Blanca as r on a.sa_estado_rechazado_Cruz_Blanca = r.sa_estado_rechazado_Cruz_Blanca " +
@@ -234,7 +234,7 @@ namespace Sistema_Archivos
             " a.sa_archivo_Cruz_Blanca_direccion_dg as [Dirección D.G.], a.sa_archivo_Cruz_Blanca_fecha_ingreso as [Fecha Ingreso], a.sa_archivo_Cruz_Blanca_fecha_carga as [Fecha Carga], " +
             " a.sa_archivo_Cruz_Blanca_fecha_descarga as [Fecha Descarga], a.sa_archivo_Cruz_Blanca_fecha_notificacion as [Fecha Notificación], a.sa_archivo_Cruz_Blanca_fecha_dg as [Fecha D.G.], " +
             " a.sa_archivo_Cruz_Blanca_fecha_proceso as [Fecha Proceso], a.sa_archivo_Cruz_Blanca_fecha_rendicion as [Fecha Rendición], a.sa_archivo_Cruz_Blanca_fecha_rechazo as [Fecha de Rechazo], " +
-            " a.sa_archivo_Cruz_Blanca_fecha_finiquito as [Fecha Finiquito] " +
+            " a.sa_archivo_Cruz_Blanca_fecha_finiquito as [Fecha Finiquito], sa_archivo_Cruz_Blanca_remesa AS [Remesa] " +
             " from sa_archivo_Cruz_Blanca as a " +
             " inner join sa_notificador as n on a.sa_notificador = n.sa_notificador " +
             " inner join sa_estado_rechazado_Cruz_Blanca as r on a.sa_estado_rechazado_Cruz_Blanca = r.sa_estado_rechazado_Cruz_Blanca " +
@@ -263,7 +263,7 @@ namespace Sistema_Archivos
 
         public int ActualizarTodo(int tipoFun, string rut, string nombreE, string direccionE, string comunaE, int motivo, int rechazo,
             string direccionDG, string fechaIngreso, string fechaCarga, string fechaNotificacion, string fechaDG, string fechaProceso,
-            string fechaRendicion, string fechaRechazo, string fechaFiniquito, string fechaDescarga, int notificador, string fun)
+            string fechaRendicion, string fechaRechazo, string fechaFiniquito, string fechaDescarga, int notificador, string fun, string Remesa)
         {
             int res = 0;
             SqlCommand update = conectar.Comando();
@@ -274,7 +274,8 @@ namespace Sistema_Archivos
             " sa_archivo_Cruz_Blanca_fecha_notificacion = @fechaNotificacion, sa_archivo_Cruz_Blanca_fecha_dg = @fechaDG, " +
             " sa_archivo_Cruz_Blanca_fecha_proceso = @fechaProceso, sa_archivo_Cruz_Blanca_fecha_rendicion = @fechaRendicion, " +
             " sa_archivo_Cruz_Blanca_fecha_rechazo = @fechaRechazo, sa_archivo_Cruz_Blanca_fecha_finiquito = @fechaFiniquito, sa_archivo_Cruz_Blanca_fecha_descarga = @fechaDescarga, " +
-            " sa_notificador = @notificador where sa_archivo_Cruz_Blanca_fun = @fun ";
+            " sa_notificador = @notificador, sa_archivo_Cruz_Blanca_remesa = @Remesa " +
+            " where sa_archivo_Cruz_Blanca_fun = @fun ";
             update.Parameters.AddWithValue("@tipoFun", tipoFun);
             update.Parameters.AddWithValue("@rut", rut);
             update.Parameters.AddWithValue("@nombreE", nombreE);
@@ -294,6 +295,7 @@ namespace Sistema_Archivos
             update.Parameters.AddWithValue("@fechaDescarga", fechaDescarga);
             update.Parameters.AddWithValue("@notificador", notificador);
             update.Parameters.AddWithValue("@fun", fun);
+            update.Parameters.AddWithValue("@Remesa", Remesa);
             conectar.Abrir();
             res = update.ExecuteNonQuery();
             conectar.Cerrar();
@@ -301,15 +303,15 @@ namespace Sistema_Archivos
         }
 
         public int IngresoArchivoExcel(string fun, string tipo_fun, string rut, string nombre_e, string direccion_e, string comuna_e, int motivo, int rechazado, string fecha_ingreso,
-            string fecha_proceso, int notificador, int usuario)
+            string fecha_proceso, int notificador, int usuario, int remesa)
         {
             int res = 0;
             SqlCommand ins = conectar.Comando();
             ins.CommandText = "insert into sa_archivo_Cruz_Blanca (sa_archivo_Cruz_Blanca_fun, sa_archivo_Cruz_Blanca_tipo_fun, sa_archivo_Cruz_Blanca_rut_afiliado, sa_archivo_Cruz_Blanca_nombre_empresa, " +
             " sa_archivo_Cruz_Blanca_direccion_empresa, sa_archivo_Cruz_Blanca_comuna_empresa, sa_motivo, sa_estado_rechazado_Cruz_Blanca, sa_archivo_Cruz_Blanca_fecha_ingreso, " +
-            " sa_archivo_Cruz_Blanca_fecha_proceso, sa_notificador, sa_usuario) " +
+            " sa_archivo_Cruz_Blanca_fecha_proceso, sa_notificador, sa_usuario, sa_archivo_Cruz_Blanca_remesa) " +
             " values (@sa_archivo_fun, @sa_tipo_fun, @sa_archivo_rut_afiliado, @sa_archivo_nombre_empresa, @sa_archivo_direccion_empresa, " +
-            " @sa_archivo_comuna_empresa, @sa_motivo, @sa_estados_rechazados, @sa_archivo_fecha_ingreso, @sa_archivo_fecha_proceso, @sa_notificador, @sa_usuario)";
+            " @sa_archivo_comuna_empresa, @sa_motivo, @sa_estados_rechazados, @sa_archivo_fecha_ingreso, @sa_archivo_fecha_proceso, @sa_notificador, @sa_usuario, @remesa)";
             ins.Parameters.AddWithValue("@sa_archivo_fun", fun);
             ins.Parameters.AddWithValue("@sa_tipo_fun", tipo_fun);
             ins.Parameters.AddWithValue("@sa_archivo_rut_afiliado", rut);
@@ -322,6 +324,7 @@ namespace Sistema_Archivos
             ins.Parameters.AddWithValue("@sa_archivo_fecha_proceso", fecha_proceso);
             ins.Parameters.AddWithValue("@sa_notificador", notificador);
             ins.Parameters.AddWithValue("@sa_usuario", usuario);
+            ins.Parameters.AddWithValue("@remesa", remesa);
             conectar.Abrir();
             res = ins.ExecuteNonQuery();
             conectar.Cerrar();

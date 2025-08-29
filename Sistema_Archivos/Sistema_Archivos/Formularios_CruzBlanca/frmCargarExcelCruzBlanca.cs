@@ -85,7 +85,7 @@ namespace Sistema_Archivos
 
         public void Ingresar_datos()
         {
-            int cantidad_ingreso = 0;
+            int cantidad_ingreso = 0, remesa = 0;
             int notificador = 1; //NOTIFICADOR POR DEFECTO
             int motivo = 1; //motivo por defecto
             int rechazo = 1; //estado rechazo por defecto
@@ -94,6 +94,18 @@ namespace Sistema_Archivos
                 FechaEntrega, RutProveedor, CorrelativoEntrega, Entregado,
                 RutCompleto, RazonSocial,
                 FechaIngreso = DateTime.Now.ToString("dd-MM-yyyy");
+
+            if (txtNombreArchivo.Text.Contains("MASIVO"))
+            {
+                //PROCESO MASIVO
+                remesa = 1;
+            }
+            else
+            {
+                string withoutExtension = System.IO.Path.GetFileNameWithoutExtension(txtNombreArchivo.Text);
+                string[] parts = withoutExtension.Split('_');
+                remesa = Convert.ToInt32(parts[parts.Length - 1]);
+            }
 
             foreach (DataGridViewRow row in dgvDatosExcel.Rows)
             {
@@ -119,7 +131,8 @@ namespace Sistema_Archivos
                 FechaFun = FechaFun.Substring(0, 10);
                 FechaFun = FechaFun.Replace("/", "-");
 
-                int ingreso_masivo = new ArchivoCruzBlanca().IngresoArchivoExcel(FolioFun, "1", RutCompleto, RazonSocial, DireccionEmpresa, ComunaEmpresa, motivo, rechazo, FechaIngreso, FechaFun, notificador, Sesion.IdUsuario);
+                int ingreso_masivo = new ArchivoCruzBlanca().IngresoArchivoExcel(FolioFun, "1", RutCompleto, RazonSocial, DireccionEmpresa, ComunaEmpresa, motivo, rechazo, FechaIngreso, FechaFun, 
+                    notificador, Sesion.IdUsuario, remesa);
                 cantidad_ingreso += 1;
             }
 

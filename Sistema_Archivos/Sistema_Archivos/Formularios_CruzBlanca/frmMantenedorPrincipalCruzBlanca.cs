@@ -407,7 +407,7 @@ namespace Sistema_Archivos
             }
             excel.Visible = true;
             worksheet.Activate();
-            FileInfo file = new FileInfo("C:\\Users\\" + Environment.UserName + "\\Desktop\\" + nombre_archivo + "");
+            FileInfo file = new FileInfo("C:\\Users\\" + Environment.UserName + "\\Desktop\\" + nombre_archivo);
             worksheet.SaveAs(file.ToString());
         }
 

@@ -73,12 +73,16 @@
             this.lblEmpresaNDescargar = new System.Windows.Forms.Label();
             this.lblTipoFDescargar = new System.Windows.Forms.Label();
             this.lblFunDescargar = new System.Windows.Forms.Label();
+            this.TxtRemesa = new System.Windows.Forms.TextBox();
+            this.LblRemesa = new System.Windows.Forms.Label();
             this.gbModificarFun.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbInformacion)).BeginInit();
             this.SuspendLayout();
             // 
             // gbModificarFun
             // 
+            this.gbModificarFun.Controls.Add(this.TxtRemesa);
+            this.gbModificarFun.Controls.Add(this.LblRemesa);
             this.gbModificarFun.Controls.Add(this.txtFechaDescarga);
             this.gbModificarFun.Controls.Add(this.lblFechaDescarga);
             this.gbModificarFun.Controls.Add(this.cmbNuevoNotificador);
@@ -572,6 +576,26 @@
             this.lblFunDescargar.TabIndex = 93;
             this.lblFunDescargar.Text = "F.U.N.";
             // 
+            // TxtRemesa
+            // 
+            this.TxtRemesa.Location = new System.Drawing.Point(674, 435);
+            this.TxtRemesa.MaxLength = 10;
+            this.TxtRemesa.Name = "TxtRemesa";
+            this.TxtRemesa.ReadOnly = true;
+            this.TxtRemesa.Size = new System.Drawing.Size(225, 22);
+            this.TxtRemesa.TabIndex = 147;
+            // 
+            // LblRemesa
+            // 
+            this.LblRemesa.AutoSize = true;
+            this.LblRemesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblRemesa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.LblRemesa.Location = new System.Drawing.Point(503, 441);
+            this.LblRemesa.Name = "LblRemesa";
+            this.LblRemesa.Size = new System.Drawing.Size(65, 16);
+            this.LblRemesa.TabIndex = 146;
+            this.LblRemesa.Text = "Remesa";
+            // 
             // frmModificarFunCruzBlanca
             // 
             this.AcceptButton = this.btnBuscar;
@@ -641,5 +665,7 @@
         private System.Windows.Forms.Label lblFunDescargar;
         private System.Windows.Forms.TextBox txtFechaDescarga;
         private System.Windows.Forms.Label lblFechaDescarga;
+        private System.Windows.Forms.TextBox TxtRemesa;
+        private System.Windows.Forms.Label LblRemesa;
     }
 }

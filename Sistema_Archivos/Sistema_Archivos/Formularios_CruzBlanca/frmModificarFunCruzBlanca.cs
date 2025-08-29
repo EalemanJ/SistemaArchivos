@@ -75,7 +75,7 @@ namespace Sistema_Archivos
                     int notificador = Convert.ToInt32(cmbNuevoNotificador.SelectedValue.ToString());
                     int motivo = Convert.ToInt32(cmbMotivo.SelectedValue.ToString());
                     int rechazo = Convert.ToInt32(cmbObervacion.SelectedValue.ToString());
-                    string FecIngreso = "", FecCarga = "", FecNoti = "", FecDg = "", FecProc = "", FecRend = "", FecRechazo = "", FecFiniquito = "", FecDescarga = "";
+                    string FecIngreso = "", FecCarga = "", FecNoti = "", FecDg = "", FecProc = "", FecRend = "", FecRechazo = "", FecFiniquito = "", FecDescarga = "", Remesa = "";
                     FecIngreso = txtFechaIngreso.Text;
                     FecCarga = txtFechaCarga.Text;
                     FecNoti = txtFechaNotificacion.Text;
@@ -85,20 +85,21 @@ namespace Sistema_Archivos
                     FecRechazo = txtFechaRechazo.Text;
                     FecFiniquito = txtFechaFiniquito.Text;
                     FecDescarga = txtFechaDescarga.Text;
+                    Remesa = TxtRemesa.Text;
 
                     FormatoFecha(ref FecIngreso, ref FecCarga, ref FecNoti, ref FecDg, ref FecProc, ref FecRend, ref FecRechazo, ref FecFiniquito, ref FecDescarga);
                     if (cmbMotivo.Text != "Rechazado")
                     {
                         actualizar_todo = new ArchivoCruzBlanca().ActualizarTodo(tipo_fun, txtRutAfiliado.Text, txtNombreEmpresa.Text, txtDireccionEmpresa.Text,
                         txtComuna.Text, motivo, 1, txtDireccionDG.Text, FecIngreso, FecCarga, FecNoti, FecDg, FecProc, FecRend, FecRechazo, FecFiniquito, FecDescarga,
-                        notificador, txtFun.Text);
+                        notificador, txtFun.Text, Remesa);
                         int eliminar = new ArchivoCruzBlanca().EliminarRechazado(txtRutAfiliado.Text);
                     }
                     else
                     {
                         actualizar_todo = new ArchivoCruzBlanca().ActualizarTodo(tipo_fun, txtRutAfiliado.Text, txtNombreEmpresa.Text, txtDireccionEmpresa.Text,
                         txtComuna.Text, motivo, rechazo, txtDireccionDG.Text, FecIngreso, FecCarga, FecNoti, FecDg, FecProc, FecRend, FecRechazo, FecFiniquito, FecDescarga,
-                        notificador, txtFun.Text);
+                        notificador, txtFun.Text, Remesa);
                         if (rechazo == 6)
                         {
                             if (!Sesion.VerificarInubicableCruzBlanca(txtRutAfiliado.Text))
@@ -201,6 +202,7 @@ namespace Sistema_Archivos
                             txtNombreEmpresa.Text = item["sa_archivo_Cruz_Blanca_nombre_empresa"].ToString();
                             txtRutAfiliado.Text = item["sa_archivo_Cruz_Blanca_rut_afiliado"].ToString();
                             txtTipoFun.Text = item["sa_archivo_Cruz_Blanca_tipo_fun"].ToString();
+                            TxtRemesa.Text = item["sa_archivo_Cruz_Blanca_remesa"].ToString();
                             cmbMotivo.Enabled = true;
                             cmbObervacion.Enabled = true;
                             txtFechaRendicion.Text = DateTime.Now.Date.ToShortDateString().Replace("/", "-");
@@ -218,6 +220,7 @@ namespace Sistema_Archivos
                             txtRutAfiliado.ReadOnly = false;
                             txtTipoFun.ReadOnly = false;
                             txtFechaDescarga.ReadOnly = false;
+                            TxtRemesa.ReadOnly = false;
                             cmbNuevoNotificador.Enabled = true;
                             //estado rechazado CruzBlanca...OK
                             cmbObervacion.DataSource = new EstadoRechazadoCruzBlancaDAL().CargarListaSeleccionadoRechazado(txtFun.Text);

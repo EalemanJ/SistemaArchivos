@@ -407,7 +407,7 @@ namespace Sistema_Archivos
             }
             excel.Visible = true;
             worksheet.Activate();
-            FileInfo file = new FileInfo("C:\\Users\\" + Environment.UserName + "\\Desktop\\" + nombre_archivo + "");
+            FileInfo file = new FileInfo("C:\\Users\\" + Environment.UserName + "\\Desktop\\" + nombre_archivo);
             worksheet.SaveAs(file.ToString());
         }
 
@@ -843,7 +843,6 @@ namespace Sistema_Archivos
                         ExportarExcel(dgvDescargarFueraPlazo, "descargarFueraPlazoColmena.xlsx");
                         MessageBox.Show("Datos actualizados correctamente.", "DATOS ACTUALIZADOS", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
-                    { }
                 }
             }
             catch (Exception)
