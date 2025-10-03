@@ -68,7 +68,7 @@
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(250, 24);
             this.lblNombre.TabIndex = 5;
-            this.lblNombre.Text = "Sistema FUN Versión 1.9.2.8";
+            this.lblNombre.Text = "Sistema FUN Versión 1.9.2.9";
             this.lblNombre.UseWaitCursor = true;
             // 
             // timer1

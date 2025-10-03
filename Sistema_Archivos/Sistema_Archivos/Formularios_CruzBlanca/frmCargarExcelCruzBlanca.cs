@@ -95,17 +95,24 @@ namespace Sistema_Archivos
                 RutCompleto, RazonSocial,
                 FechaIngreso = DateTime.Now.ToString("dd-MM-yyyy");
 
-            if (txtNombreArchivo.Text.Contains("MASIVO"))
+            try
             {
-                //PROCESO MASIVO
+                if (txtNombreArchivo.Text.Contains("MASIVO"))
+                {
+                    //PROCESO MASIVO
+                    remesa = 1;
+                }
+                else
+                {
+                    string withoutExtension = System.IO.Path.GetFileNameWithoutExtension(txtNombreArchivo.Text);
+                    string[] parts = withoutExtension.Split('_');
+                    remesa = Convert.ToInt32(parts[parts.Length - 1]);
+                }
+            }
+            catch (Exception)
+            {
                 remesa = 1;
-            }
-            else
-            {
-                string withoutExtension = System.IO.Path.GetFileNameWithoutExtension(txtNombreArchivo.Text);
-                string[] parts = withoutExtension.Split('_');
-                remesa = Convert.ToInt32(parts[parts.Length - 1]);
-            }
+            }            
 
             foreach (DataGridViewRow row in dgvDatosExcel.Rows)
             {
