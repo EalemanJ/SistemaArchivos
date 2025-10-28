@@ -89,12 +89,12 @@ namespace Sistema_Archivos
             int notificador = 1; //NOTIFICADOR POR DEFECTO
             int motivo = 1; //por defecto
             int rechazo = 1; //por defecto
-            string fechaProceso = "", fechaIngreso = "";
+            string fechaProceso = "", fechaIngreso = "", fun, fechaFun, tipoFun, rut, dv, nombreE, comunaE, direccionE, fechaEntrega;
             foreach (DataGridViewRow row in dgvDatosExcel.Rows)
             {
-                string fun = row.Cells["FOLIO FUN"].Value.ToString();
-                string tipoFun = row.Cells["TIPO FUN"].Value.ToString();
-                string fechaFun = row.Cells["FECHA FUN"].Value.ToString(); // fecha proceso
+                fun = row.Cells["FOLIO FUN"].Value.ToString();
+                tipoFun = row.Cells["TIPO FUN"].Value.ToString();
+                fechaFun = row.Cells["FECHA FUN"].Value.ToString(); // fecha proceso
                 if (string.IsNullOrWhiteSpace(fechaFun))
                 {
                     fechaProceso = "";
@@ -103,12 +103,12 @@ namespace Sistema_Archivos
                 {
                     fechaProceso = DateTime.ParseExact(fechaFun, "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd-MM-yyyy");
                 }
-                string rut = row.Cells["RUT"].Value.ToString();
-                string dv = row.Cells["DV"].Value.ToString();
-                string nombreE = row.Cells["RAZON SOCIAL"].Value.ToString();
-                string comunaE = row.Cells["COMUNA"].Value.ToString();
-                string direccionE = row.Cells["DIRECCION"].Value.ToString();
-                string fechaEntrega = row.Cells["FECHA ENTREGA"].Value.ToString(); //fecha ingreso
+                rut = row.Cells["RUT"].Value.ToString();
+                dv = row.Cells["DV"].Value.ToString();
+                nombreE = row.Cells["RAZON SOCIAL"].Value.ToString();
+                comunaE = row.Cells["COMUNA"].Value.ToString();
+                direccionE = row.Cells["DIRECCION"].Value.ToString();
+                fechaEntrega = row.Cells["FECHA ENTREGA"].Value.ToString(); //fecha ingreso
                 if (string.IsNullOrWhiteSpace(fechaEntrega))
                 {
                     fechaIngreso = "";

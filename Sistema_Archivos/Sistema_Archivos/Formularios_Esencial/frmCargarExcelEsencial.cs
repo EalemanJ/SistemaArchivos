@@ -89,22 +89,24 @@ namespace Sistema_Archivos
             int notificador = 1; //NOTIFICADOR POR DEFECTO
             int motivo = 1; //motivo por defecto
             int rechazo = 1; //estado rechazo por defecto
-            string FechaProceso = "", Folio = "", RutAfiliado = "", FechaFun = "", Nombre = "", Calle = "", Num = "",
-                Depto = "", Comuna = "", Direccion = "", FechaIngreso = DateTime.Now.ToString("dd-MM-yyyy");
+            string FechaProceso = "", Folio = "", FechaFun = "", Nombre = "", Calle = "", Num = "",
+                Depto = "", Comuna = "", Direccion = "", FechaIngreso = DateTime.Now.ToString("dd-MM-yyyy"), RutNumero, RutDv, Rut;
             foreach (DataGridViewRow row in dgvDatosExcel.Rows)
             {
                 //Foio|Rut afiliado|Fecha Fun|Razon social|Rut empleador|DV|Calle|Numero|Depto|Comuna|Ciudad|Telefono|Correo|Pactado|Tipo Notificación
 
                 Folio = row.Cells[0].Value.ToString(); //folio
-                RutAfiliado = row.Cells[1].Value.ToString(); //Rut afiliado
+                //RutAfiliado = row.Cells[1].Value.ToString(); //Rut afiliado
                 FechaFun = row.Cells[2].Value.ToString(); // fecha proceso
                 Nombre = row.Cells[3].Value.ToString(); //Razon social
+                RutNumero = Convert.ToString(row.Cells[4].Value);
+                RutDv = Convert.ToString(row.Cells[5].Value);
                 Calle = row.Cells[6].Value.ToString(); //Calle
                 Num = row.Cells[7].Value.ToString(); //Numero
                 Depto = row.Cells[8].Value.ToString(); //Depto
                 Comuna = row.Cells[9].Value.ToString(); //comuna
 
-                RutAfiliado = RutAfiliado.Replace("-", "");
+                //RutAfiliado = RutAfiliado.Replace("-", "");
                 Direccion = Calle + " " + Num + " " + Depto;
                 if (string.IsNullOrWhiteSpace(FechaFun))
                 {
@@ -114,7 +116,9 @@ namespace Sistema_Archivos
                 {
                     FechaProceso = DateTime.Parse(FechaFun).ToString("dd-MM-yyyy");
                 }
-                int ingreso_masivo = new ArchivoEsencial().IngresoArchivoExcel(Folio, "1", RutAfiliado, Nombre, Direccion, Comuna, motivo, rechazo, FechaIngreso, FechaProceso, notificador, Sesion.IdUsuario);
+
+                Rut = RutNumero + RutDv.ToUpper();
+                int ingreso_masivo = new ArchivoEsencial().IngresoArchivoExcel(Folio, "1", Rut, Nombre, Direccion, Comuna, motivo, rechazo, FechaIngreso, FechaProceso, notificador, Sesion.IdUsuario);
                 cantidad_ingreso += 1;
             }
             MessageBox.Show("Datos desde planilla Excel ingresados correctamente. Se insertaron " + cantidad_ingreso + ".", "INGRESO CORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);

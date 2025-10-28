@@ -121,9 +121,10 @@ namespace Sistema_Archivos
                     a.sa_archivo_Cruz_Blanca_fun, a.sa_archivo_Cruz_Blanca_fecha_notificacion, a.sa_archivo_Cruz_Blanca_fecha_rendicion, a.sa_archivo_Cruz_Blanca_fecha_proceso, 
                     a.sa_archivo_Cruz_Blanca_fecha_finiquito, a.sa_archivo_cruz_blanca_comuna_empresa,
 	                CASE 
-		                WHEN convert(varchar(3), r.sa_estado_rechazado_Cruz_Blanca_desc, 120) = 'Sin' THEN ''
-		                Else convert(varchar(3), r.sa_estado_rechazado_Cruz_Blanca_desc, 120) 
-		            End as [codigo],
+                        WHEN sa_archivo_cruz_blanca_remesa IS NULL THEN 0
+                        WHEN LTRIM(RTRIM(sa_archivo_cruz_blanca_remesa)) = '' THEN 0
+		                ELSE sa_archivo_cruz_blanca_remesa
+                    End as [codigo],
                     a.sa_archivo_cruz_blanca_direccion_dg
                 FROM sa_archivo_Cruz_Blanca as a 
                     INNER JOIN sa_notificador as n on a.sa_notificador = n.sa_notificador 
