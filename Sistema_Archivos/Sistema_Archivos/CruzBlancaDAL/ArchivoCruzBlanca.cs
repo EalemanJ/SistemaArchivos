@@ -124,7 +124,16 @@ namespace Sistema_Archivos
                         WHEN sa_archivo_cruz_blanca_remesa IS NULL THEN 0
                         WHEN LTRIM(RTRIM(sa_archivo_cruz_blanca_remesa)) = '' THEN 0
 		                ELSE sa_archivo_cruz_blanca_remesa
-                    End as [codigo],
+                    End as [remesa],
+                    CASE
+                        WHEN CONVERT(VARCHAR(3), r.sa_estado_rechazado_cruz_blanca_desc, 120) = 'Sin' THEN ''
+                        ELSE 
+                            CASE 
+                                WHEN CONVERT(VARCHAR(3), r.sa_estado_rechazado_cruz_blanca_desc, 120) = '00' 
+                                     THEN '00'
+                                ELSE r.sa_estado_rechazado_cruz_blanca_desc
+                            END
+                    END AS [codigo],
                     a.sa_archivo_cruz_blanca_direccion_dg
                 FROM sa_archivo_Cruz_Blanca as a 
                     INNER JOIN sa_notificador as n on a.sa_notificador = n.sa_notificador 

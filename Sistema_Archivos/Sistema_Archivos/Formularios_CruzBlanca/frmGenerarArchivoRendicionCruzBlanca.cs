@@ -77,7 +77,7 @@ namespace Sistema_Archivos
                             fechaNotificacion = "";
                         }
 
-                        dgvArchivoRendicion.Rows.Add("CB", item["sa_archivo_Cruz_Blanca_fun"], item["codigo"], item["sa_archivo_cruz_blanca_comuna_empresa"], fechaProceso, "00",
+                        dgvArchivoRendicion.Rows.Add("CB", item["sa_archivo_Cruz_Blanca_fun"], item["remesa"], item["sa_archivo_cruz_blanca_comuna_empresa"], fechaProceso, "00",
                             fechaNotificacion, item["sa_archivo_cruz_blanca_direccion_dg"], Num, "SERVID");
                         Num++;
                     }
@@ -110,7 +110,7 @@ namespace Sistema_Archivos
                             fechaNotificacion = "";
                         }
 
-                        dgvArchivoRendicion.Rows.Add("CB", item["sa_archivo_Cruz_Blanca_fun"], item["codigo"], item["sa_archivo_cruz_blanca_comuna_empresa"], fechaProceso, "01",
+                        dgvArchivoRendicion.Rows.Add("CB", item["sa_archivo_Cruz_Blanca_fun"], item["remesa"], item["sa_archivo_cruz_blanca_comuna_empresa"], fechaProceso, "01",
                             fechaNotificacion, item["sa_archivo_cruz_blanca_direccion_dg"], Num, "SERVID");
                         Num++;
                     }
@@ -150,7 +150,7 @@ namespace Sistema_Archivos
                             fechaNotificacion = "";
                         }
 
-                        dgvArchivoRendicion.Rows.Add("CB", item["sa_archivo_Cruz_Blanca_fun"], item["codigo"], item["sa_archivo_cruz_blanca_comuna_empresa"], fechaProceso, item["codigo"],
+                        dgvArchivoRendicion.Rows.Add("CB", item["sa_archivo_Cruz_Blanca_fun"], item["remesa"], item["sa_archivo_cruz_blanca_comuna_empresa"], fechaProceso, item["codigo"],
                             fechaNotificacion, item["sa_archivo_cruz_blanca_direccion_dg"], Num, "SERVID");
                         Num++;
                     }
