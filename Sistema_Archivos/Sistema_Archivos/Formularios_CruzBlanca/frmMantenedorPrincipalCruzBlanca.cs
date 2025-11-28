@@ -405,6 +405,7 @@ namespace Sistema_Archivos
                     excel.Cells[rowIndex + 1, ColumnIndex] = row.Cells[col.Name].Value.ToString();
                 }
             }
+            worksheet.Cells.WrapText = false;
             excel.Visible = true;
             worksheet.Activate();
             FileInfo file = new FileInfo("C:\\Users\\" + Environment.UserName + "\\Desktop\\" + nombre_archivo);
