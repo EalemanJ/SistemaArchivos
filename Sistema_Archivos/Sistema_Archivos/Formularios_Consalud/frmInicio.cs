@@ -47,34 +47,42 @@ namespace Sistema_Archivos
                     }
                     if (pbCarga.Value == 36)
                     {
-                        if (ConexionInternet())
+                        try
                         {
-                            if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+                            if (ConexionInternet())
                             {
-                                if (System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CheckForUpdate())
+                                if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
                                 {
-                                    timer1.Stop();
-                                    DialogResult mensaje = MessageBox.Show("Se ha encontrado una nueva versión de la aplicación. ¿Desea actualizar ahora?", "NUEVA VERSIÓN", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk);
-                                    if (mensaje == DialogResult.Yes)
+                                    if (System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CheckForUpdate())
                                     {
-                                        DialogResult alerta = MessageBox.Show("Una vez iniciado el proceso de actualización no se podrá detener. ¿Continuar de todas maneras?", "ESPERANDO CONFIRMACIÓN", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk);
-                                        if (alerta == DialogResult.Yes)
+                                        timer1.Stop();
+                                        DialogResult mensaje = MessageBox.Show("Se ha encontrado una nueva versión de la aplicación. ¿Desea actualizar ahora?", "NUEVA VERSIÓN", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk);
+                                        if (mensaje == DialogResult.Yes)
                                         {
-                                            timer1.Stop();
-                                            ComprobarUpdate u = new ComprobarUpdate();
-                                            u.BuscarActualizacion("arranque");
+                                            DialogResult alerta = MessageBox.Show("Una vez iniciado el proceso de actualización no se podrá detener. ¿Continuar de todas maneras?", "ESPERANDO CONFIRMACIÓN", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk);
+                                            if (alerta == DialogResult.Yes)
+                                            {
+                                                timer1.Stop();
+                                                ComprobarUpdate u = new ComprobarUpdate();
+                                                u.BuscarActualizacion("arranque");
+                                            }
+                                            else
+                                            {
+                                                timer1.Start();
+                                            }
                                         }
                                         else
                                         {
                                             timer1.Start();
                                         }
                                     }
-                                    else
-                                    {
-                                        timer1.Start();
-                                    }
                                 }
                             }
+                        }
+                        catch (Exception)
+                        {
+                            //NO SE PUDO VALIDAR LA ACTUALIZACIÓN
+                            //CONTINUAR, NO ES INVALIDANTE EN FLUJO
                         }
                     }
                     if (pbCarga.Value == 48)
@@ -135,14 +143,6 @@ namespace Sistema_Archivos
             {
                 MessageBox.Show("Se ha detectado un error en la aplicación y se cerrará. Por favor contáctese con el Proveedor del sistema. ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (tipo_error == "error_archivos")
-            {
-                string ruta = @"C:\Program Files\Aleman Informatica\Sistema Fun\";
-                //string ruta = @"C:\Program Files (x86)\Aleman Informatica\Sistema Fun\";
-                MessageBox.Show("Se ha producido un error al verificar los archivos de instalación del sistema. Revise la carpeta " +
-                    " raiz. La ruta de instalación es '" + ruta + "'", "ARCHIVOS DE APLICACIÓN CORRUPTOS", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
             Thread.Sleep(4000);
             Application.ExitThread();
         }
@@ -175,7 +175,7 @@ namespace Sistema_Archivos
             {
                 System.Net.HttpWebRequest req;
                 System.Net.HttpWebResponse res;
-                req = (System.Net.HttpWebRequest)System.Net.WebRequest.Create("http://www.google.com");
+                req = (System.Net.HttpWebRequest)System.Net.WebRequest.Create("http://www.alemaninformatica.com");
                 res = (System.Net.HttpWebResponse)req.GetResponse();
                 req.Abort();
                 if (res.StatusCode == System.Net.HttpStatusCode.OK)

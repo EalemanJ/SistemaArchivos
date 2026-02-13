@@ -186,6 +186,7 @@ namespace Sistema_Archivos
                 }
             }
             excel.Visible = true;
+            worksheet.Cells.WrapText = false;
             worksheet.Activate();
             string nombre_archivo = "ReporteRendicionCruz_Blanca" + nombre_usuario + ".xlsx";
             FileInfo file = new FileInfo("C:\\Users\\" + Environment.UserName + "\\Desktop\\" + nombre_archivo);
